@@ -1,14 +1,7 @@
 # Codeclan Week 02 Day 05
 
 ## Multiple Classes, Interactions & Class Diagrams Week Homework
-
-
-
-## Homework Review Notes
-
-Remember to test negative cases.
-Each class should be invisible to each other. River should have had a get_fish function - see homework answers.
-Abstraction? Each method should not see into the others mechanisms.
+## Codeclan Karaoke Bar
 
 
 
@@ -24,10 +17,7 @@ This should have Rooms, Guests, Songs and a Bar - each will need a class.
 * Guests should have a favourite song and if it's on  playlist execute their party piece
 
 
-
-
-
-Stick to your principles:
+###Stick to your principles:
 
 * Always start on paper with the screen off, write down MVP.
 * Create Class diagram detailing classes, attributes, tests and methods. Check before beginning to code.
@@ -36,16 +26,6 @@ Stick to your principles:
 * Test first, make it fail, code it to pass, test again, commit THEN refactor - this lets you know your passes are solid.
 * Keep your variable names typed for understanding.
 * Watch the console, use PRY for this one and progress step-by-step when muddled.
-
-
-
-
-## Notes
-
-* Initially I'd considered giving both the room and the bar a check_if_guest_has_money function but - drawing from pub lab solution - if you limit the guest purchasing action with a check_sufficient_fund function you can kill 2 birds with one stone. Responsibility though?
-* Reading through this it at first seems that rooms should have functionality to check in check out guests - HOWEVER - it's a karaoke bar - there may be many rooms with different prices and you'd only want to be in one at any one time (assuming it's like a hotel) make the Bar class the runner/linchpin.
-* Be careful of nils slipping through if you've mistyped instance variables e.g. song instead of song_1 in both function and assertion but still return true yet be functionally useless.
-
 
 
 ### Order of approach:
@@ -60,6 +40,12 @@ Stick to your principles:
 * Begin creating test functions, let it fail, then code it to pass.
 * Commit once passed. Keep a record, keep it clean.
 
+
+## Notes
+
+* Initially I'd considered giving both the room and the bar a check_if_guest_has_money function but - drawing from pub lab solution - if you limit the guest purchasing action with a check_sufficient_fund function you can kill 2 birds with one stone. Responsibility though?
+* Reading through this it at first seems that rooms should have functionality to check in check out guests - HOWEVER - it's a karaoke bar - there may be many rooms with different prices and you'd only want to be in one at any one time (assuming it's like a hotel) make the Bar class the runner/linchpin.
+* Be careful of nils slipping through if you've mistyped instance variables e.g. song instead of song_1 in both function and assertion but still return true yet be functionally useless.
 
 
 
