@@ -43,5 +43,13 @@ class TestGuest<MiniTest::Test
     assert_equal("Ooft ya dancer!",@guest_1.party_piece)
   end
 
+  def test_affordability_true
+    assert_equal(true, @guest_1.can_afford(@room))
+  end
+
+  def test_affordability_false #double edged - tests that drink works too
+    assert_equal(false, @guest_2.can_afford(@drink))
+  end
+
 
 end
