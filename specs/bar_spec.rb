@@ -19,7 +19,8 @@ class TestBar < MiniTest::Test
     @room = Room.new("The Excelsior Suite",6, 8,[@song])
     @guest_1 = Guest.new("Max Cooper",33,30,@song,"Ooft ya dancer!")
     @guest_2 = Guest.new("Johnny Scrounger",33,2,@song,"*radiates fluorescent pong*")
-    @bar = Bar.new("The House of Shattered Windows", [@drink])
+    @bar = Bar.new("The House of Shattered Windows", [@drink],[@room])
+
   end
 
   def test_has_name
@@ -28,6 +29,10 @@ class TestBar < MiniTest::Test
 
   def test_has_drinks
     assert_equal([@drink],@bar.drink_arr)
+  end
+
+  def test_has_rooms
+    assert_equal([@room],@bar.room_arr)
   end
 
 end # class end - don't touch
