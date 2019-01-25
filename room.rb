@@ -29,12 +29,18 @@ class Room
   end
 
   def check_in(guest)
-    guest.tab_int += @price_int
-    @guest_arr << guest
+    if @capacity_int > 0
+      guest.tab_int += @price_int
+      @guest_arr << guest
+      @capacity_int -= 1
+    else
+      return "We're sorry #{guest.name_string} but this room is full, please try checking into another room."
+    end
   end
 
   def check_out(guest)
     @guest_arr.delete(guest)
+    @capacity_int += 1
   end
 
 end #This is class end, stop stealing it.

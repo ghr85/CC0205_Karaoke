@@ -14,7 +14,7 @@ class TestRoom < MiniTest::Test #inherit test functions
   def setup # set up test data
     @song_1 = Song.new('Willaris. K', "Natural Selection")#create test objects
     @song_2 = Song.new('Willaris. K', "Natural Selection")
-    @guest_1 = Guest.new("Max Cooper",33,30,@song_1,"*gets on the floor and does the worm*")
+    @guest_1 = Guest.new("Max Cooper",33,100,@song_1,"*gets on the floor and does the worm*")
     @guest_2 = Guest.new("Stephan Bodzin",40,30,@song_2,"Ooft ya dancer!")
     @room = Room.new("The Excelsior Suite",6, 8,[@song_1])
   end
@@ -69,6 +69,30 @@ class TestRoom < MiniTest::Test #inherit test functions
     @room.check_out(@guest_2)
     assert_equal("Stephan Bodzin is not checked in.", @room.find_guest(@guest_2))
     assert_equal("Max Cooper is checked in to The Excelsior Suite.", @room.find_guest(@guest_1)) #Double test just to make sure function is targetting specific guest
+  end
+
+  def test_check_in_increase_capacity
+    @room.check_in(@guest_1)
+    assert_equal(7,@room.capacity_int)
+  end
+
+  def test_check_in_decrease_capacity
+    @room.check_in(@guest_1)#use the same guest
+    @room.check_in(@guest_1)#double edged check that this
+    @room.check_out(@guest_1)#doesn't delete 2 folk with same name
+    assert_equal(7,@room.capacity_int)
+  end
+
+  def test_add_guest_to_room__room_full
+    @room.check_in(@guest_1)
+    @room.check_in(@guest_1)
+    @room.check_in(@guest_1)
+    @room.check_in(@guest_1)
+    @room.check_in(@guest_1)
+    @room.check_in(@guest_1)
+    @room.check_in(@guest_1)
+    @room.check_in(@guest_1)
+    assert_equal("We're sorry Max Cooper but this room is full, please try checking into another room.", @room.check_in(@guest_1))
   end
 
 
