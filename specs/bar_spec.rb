@@ -36,6 +36,7 @@ class TestBar < MiniTest::Test
   end
 
   def test_sell_drink
+    @room.check_in(@guest_1)
     assert_equal("That'll be £3, thanks Max Cooper", @bar.sell_drink(@drink, @guest_1))
   end
 

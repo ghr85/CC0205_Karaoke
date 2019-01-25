@@ -19,4 +19,16 @@ class Guest
     def can_afford(product)
      return @wallet_int >= product.price_int + @tab_int
    end
+
+   def buy_drink(drink,bar)
+     if @age_int > 17
+       if can_afford(drink)
+         bar.sell_drink(drink, self)
+       else
+         return "Sorry you don't have enough"
+       end
+     else
+       return "you're not old enough"
+     end
+   end
 end
