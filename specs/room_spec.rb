@@ -68,8 +68,7 @@ class TestRoom < MiniTest::Test #inherit test functions
     @room.check_in(@guest_1)
     @room.check_out(@guest_2)
     assert_equal("Stephan Bodzin is not checked in.", @room.find_guest(@guest_2))
-    assert_equal("Max Cooper is checked in to The Excelsior Suite.", @room.find_guest(@guest_1))
-
+    assert_equal("Max Cooper is checked in to The Excelsior Suite.", @room.find_guest(@guest_1)) #Double test just to make sure function is targetting specific guest
   end
 
 
