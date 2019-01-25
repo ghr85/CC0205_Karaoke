@@ -35,4 +35,8 @@ class TestBar < MiniTest::Test
     assert_equal([@room],@bar.room_arr)
   end
 
+  def test_sell_drink
+    assert_equal("That'll be £3, thanks Max Cooper", @bar.sell_drink(@drink, @guest_1))
+  end
+
 end # class end - don't touch
