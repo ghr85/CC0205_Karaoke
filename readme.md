@@ -77,4 +77,4 @@ Stick to your principles:
 * bar_spec.rb - Test spec for Bar class
 
 
-> "What do I know? I'm a bear. I sucks the heads off fish..."
+> Actually, it's pronounced "mill-e-wah-que" which is Algonquin for "the good land."
