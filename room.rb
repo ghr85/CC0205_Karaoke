@@ -29,10 +29,15 @@ class Room
   end
 
   def check_in(guest)
-    if @capacity_int > 0
-      guest.tab_int += @price_int
-      @guest_arr << guest
-      @capacity_int -= 1
+    if @capacity_int > 0 #check capacity before checking in
+      guest.tab_int += @price_int # add it to the tab to be paid on check-out
+      @guest_arr << guest #put the guest in the room array
+      @capacity_int -= 1 #drop capacity
+      if @playlist_arr.find{|song_element| song_element == guest.favourite_song} == guest.favourite_song
+        return guest.party_piece #Return the "that's my song" trick.
+      else
+        return "This place is so mainstream."
+      end
     else
       return "We're sorry #{guest.name_string} but this room is full, please try checking into another room."
     end

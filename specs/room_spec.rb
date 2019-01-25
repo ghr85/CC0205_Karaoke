@@ -79,8 +79,16 @@ class TestRoom < MiniTest::Test #inherit test functions
   def test_check_in_decrease_capacity
     @room.check_in(@guest_1)#use the same guest
     @room.check_in(@guest_1)#double edged check that this
-    @room.check_out(@guest_1)#doesn't delete 2 folk with same name
+    @room.check_out(@guest_1)#doesn't delete 2 guests with same name
     assert_equal(7,@room.capacity_int)
+  end
+
+  def test_check_in_party_piece__positive
+    assert_equal("*gets on the floor and does the worm*", @room.check_in(@guest_1))
+  end
+
+  def test_check_in_party_piece__negative
+    assert_equal("This place is so mainstream.", @room.check_in(@guest_2))
   end
 
   def test_add_guest_to_room__room_full
