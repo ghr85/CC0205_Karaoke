@@ -4,6 +4,7 @@
 
 require('minitest/autorun')
 require('minitest/rg')
+require('pry')
 require_relative('../guest.rb')
 require_relative('../song.rb')
 require_relative('../room.rb')
@@ -58,6 +59,11 @@ class TestGuest<MiniTest::Test
     assert_equal("That'll be £3, thanks Max Cooper", @guest_1.buy_drink(@drink,@bar))
   end
 
+  def test_can_buy_drink__positive_tab
+    @guest_1.buy_drink(@drink,@bar)
+    assert_equal(3, @guest_1.tab_int)
+  end
+
   def test_can_buy_drink__negative__money
     assert_equal("Sorry you don't have enough", @guest_2.buy_drink(@drink,@bar))
   end
@@ -66,6 +72,20 @@ class TestGuest<MiniTest::Test
     assert_equal("you're not old enough", @guest_3.buy_drink(@drink,@bar))
   end
 
+  def test_request_room
+
+    @guest_1.request_room(@room) #request a room (could be one of many)
+    assert_equal(@room.find_guest(@guest_1), "Max Cooper is checked in to The Excelsior Suite.")
+  end
+
+  def test__settle_bill
+    @guest_1.request_room(@room)
+    @guest_1.buy_drink(@drink,@bar)
+    @guest_1.buy_drink(@drink,@bar)
+    # binding.pry
+    @guest_1.settle_bill(@room)
+    assert_equal(18, @guest_1.wallet_int)
+  end
 
 
-end
+end #class end

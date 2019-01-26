@@ -16,11 +16,11 @@ class Room
     @guest_arr = []
   end
 
-  def add_song_to_room(song)
+  def add_song_to_room(song)#add song object to playlist array
     @playlist_arr << song
   end
 
-  def find_guest(guest)
+  def find_guest(guest)#check if a guest is checked in
     if @guest_arr.find{|guest_element| guest_element == guest } == guest
       return "#{guest.name_string} is checked in to #{@name_string}."
     else
@@ -28,7 +28,7 @@ class Room
     end
   end
 
-  def check_in(guest)
+  def check_in(guest) #check in guest - tricky responsibilities.
     if @capacity_int > 0 #check capacity before checking in
       guest.tab_int += @price_int # add it to the tab to be paid on check-out
       @guest_arr << guest #put the guest in the room array
@@ -36,16 +36,17 @@ class Room
       if @playlist_arr.find{|song_element| song_element == guest.favourite_song} == guest.favourite_song
         return guest.party_piece #Return the "that's my song" trick.
       else
-        return "This place is so mainstream."
+        return "This place is so mainstream."#This gives you a false confirmation value
+      else
+        return "We're sorry #{guest.name_string} but this room is full, please try checking into another room."
       end
-    else
-      return "We're sorry #{guest.name_string} but this room is full, please try checking into another room."
     end
-  end
 
-  def check_out(guest)
-    @guest_arr.delete(guest)
-    @capacity_int += 1
-  end
+    def check_out(guest)
+      guest.settle_bill(self)#request that guest settle bill
+      @guest_arr.delete(guest)
+      @capacity_int += 1
+      return "Thank you for your custom #{guest.name_string}"
+    end
 
-end #This is class end, stop stealing it.
+  end #This is class end, stop stealing it.

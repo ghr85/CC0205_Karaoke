@@ -7,6 +7,8 @@ require ('minitest/rg')
 require_relative ('../guest.rb')
 require_relative ('../song.rb')
 require_relative ('../room.rb')
+require_relative ('../drink.rb')
+require_relative ('../bar.rb')
 
 
 class TestRoom < MiniTest::Test #inherit test functions
@@ -17,6 +19,8 @@ class TestRoom < MiniTest::Test #inherit test functions
     @guest_1 = Guest.new("Max Cooper",33,100,@song_1,"*gets on the floor and does the worm*")
     @guest_2 = Guest.new("Stephan Bodzin",40,30,@song_2,"Ooft ya dancer!")
     @room = Room.new("The Excelsior Suite",6, 8,[@song_1])
+    @bar = Bar.new("The House of Shattered Windows", [@drink],[@room])
+    @drink = Drink.new('Beer', 3)
   end
 
   def test_has_name? #confirm data is accessible
@@ -69,6 +73,14 @@ class TestRoom < MiniTest::Test #inherit test functions
     @room.check_out(@guest_2)
     assert_equal("Stephan Bodzin is not checked in.", @room.find_guest(@guest_2))
     assert_equal("Max Cooper is checked in to The Excelsior Suite.", @room.find_guest(@guest_1)) #Double test just to make sure function is targetting specific guest
+  end
+
+  def test_remove_pay_tab
+    @room.check_in(@guest_1)
+    @guest_1.buy_drink(@drink,@bar)
+    @guest_1.buy_drink(@drink,@bar)
+    @room.check_out(@guest_1)
+    assert_equal(88, @guest_1.wallet_int)
   end
 
   def test_check_in_increase_capacity
