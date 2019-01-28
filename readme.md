@@ -3,6 +3,12 @@
 ## Multiple Classes, Interactions & Class Diagrams Week Homework
 ## Codeclan Karaoke Bar
 
+## Functionality
+
+* Guests can request rooms/drinks IF they have enough money (including tab)
+* Guests/can check in/out of rooms and accrue tab which is paid upon check out
+* Guests can execute their party piece if they check into a room and see their favourite song on the playlist.
+* Songs can be added to a room's playlist
 
 
 ## Homework MVP

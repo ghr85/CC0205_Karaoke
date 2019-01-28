@@ -36,17 +36,17 @@ class Room
       if @playlist_arr.find{|song_element| song_element == guest.favourite_song} == guest.favourite_song
         return guest.party_piece #Return the "that's my song" trick.
       else
-        return "This place is so mainstream."#This gives you a false confirmation value
-      else
-        return "We're sorry #{guest.name_string} but this room is full, please try checking into another room."
+        return "This place is so mainstream."#This gives you a negative return value to test for
       end
+    else
+      return "We're sorry #{guest.name_string} but this room is full, please try checking into another room."
     end
+  end
 
-    def check_out(guest)
-      guest.settle_bill(self)#request that guest settle bill
-      @guest_arr.delete(guest)
-      @capacity_int += 1
-      return "Thank you for your custom #{guest.name_string}"
-    end
+  def check_out(guest)
+    guest.settle_bill(self) #call on the guess to settle their bill and ACCESS THEIR OWN WALLET
+    @guest_arr.delete(guest) #get rid of guest
+    @capacity_int += 1 #increase capacity
+  end
 
-  end #This is class end, stop stealing it.
+end #This is class end, stop stealing it.
