@@ -23,7 +23,7 @@ This should have Rooms, Guests, Songs and a Bar - each will need a class.
 * Guests should have a favourite song and if it's on  playlist execute their party piece
 
 
-###Stick to your principles:
+### Stick to your principles:
 
 * Always start on paper with the screen off, write down MVP.
 * Create Class diagram detailing classes, attributes, tests and methods. Check before beginning to code.
